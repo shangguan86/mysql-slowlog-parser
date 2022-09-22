@@ -89,6 +89,7 @@ func (p *SlowLogParser) Parser(text string) (*log.Event, error) {
 
 		// Remove \n.
 		//line = line[0 : lineLen-1]
+		// No Need Remove \n
 		line = line[0:lineLen]
 
 		if p.inHeader {
