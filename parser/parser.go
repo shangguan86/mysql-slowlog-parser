@@ -21,8 +21,9 @@ var (
 	metricsRe = regexp.MustCompile(`(\w+): (\S+|\z)`)
 	adminRe   = regexp.MustCompile(`command: (.+)`)
 	setRe     = regexp.MustCompile(`^SET (?:last_insert_id|insert_id|timestamp)`)
-	setTs     = regexp.MustCompile(`^SET timestamp=\d{10}`)
-	useRe     = regexp.MustCompile(`^(?i)use `)
+	//setTs     = regexp.MustCompile(`^SET timestamp=\d{10}`)
+	setTs = regexp.MustCompile(`^SET timestamp=(\d)+`)
+	useRe = regexp.MustCompile(`^(?i)use `)
 )
 
 // A SlowLogParser parses a MySQL slow log. It implements the LogParser interface.
