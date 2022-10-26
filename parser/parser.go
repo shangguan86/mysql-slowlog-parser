@@ -74,9 +74,7 @@ func (p *SlowLogParser) Parser(text string) (*log.Event, error) {
 		r := bufio.NewReader(strings.NewReader(v))
 
 		line, _ := r.ReadString('\n')
-
 		lineLen := uint64(len(line))
-
 		if lineLen >= 20 && ((line[0] == '/' && line[lineLen-6:lineLen] == "with:\n") ||
 			(line[0:5] == "Time ") ||
 			(line[0:4] == "Tcp ") ||
@@ -92,7 +90,6 @@ func (p *SlowLogParser) Parser(text string) (*log.Event, error) {
 		//line = line[0 : lineLen-1]
 		// No Need Remove \n
 		line = line[0:lineLen]
-
 		if p.inHeader {
 			p.parseHeader(line)
 		} else if p.inQuery {
@@ -111,7 +108,6 @@ func (p *SlowLogParser) Parser(text string) (*log.Event, error) {
 
 func (p *SlowLogParser) parseHeader(line string) {
 	p.logf("header")
-
 	if !headerRe.MatchString(line) {
 		p.inHeader = false
 		p.inQuery = true

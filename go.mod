@@ -1,3 +1,3 @@
 module github.com/eopenio/slowlog-parser
 
-go 1.18
+go 1.16

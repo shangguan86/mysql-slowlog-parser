@@ -682,7 +682,10 @@ func (p *SlowLogParser) Fingerprint() string {
 
 		if cpToOffset > cpFromOffset {
 			l := cpToOffset - cpFromOffset
+			//fmt.Printf("事务数据:%#v \n",p.event)
+			//fmt.Printf("切片前:%#v \n",p.event.Query[cpFromOffset:cpToOffset])
 			prevWord = strings.ToLower(p.event.Query[cpFromOffset:cpToOffset])
+			//fmt.Printf("切片后:%#v \n",prevWord)
 			if Debug {
 				fmt.Printf("copy '%s' (%d:%d, %d:%d) %d\n", prevWord, fi, fi+l, cpFromOffset, cpToOffset, l)
 			}
